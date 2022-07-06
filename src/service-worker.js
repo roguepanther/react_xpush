@@ -73,4 +73,16 @@ self.addEventListener('message', (event) => {
   }
 });
 
+// This code executes in its own worker or thread 
+self.addEventListener("install", event => {
+  self.skipWaiting();
+  console.log("Service Worker installed");
+});
+
+self.addEventListener("activate", event => {
+  console.log("Service worker activated");
+});
+
+
+
 // Any other custom service worker logic can go here.
