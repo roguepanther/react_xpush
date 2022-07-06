@@ -63,10 +63,14 @@ registerRoute(
 
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
-// self.addEventListener('message', (event) => {
-//   if (event.data && event.data.type === 'SKIP_WAITING') {
-//     self.skipWaiting();
-//   }
-// });
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+  if (event.data.type === 'CLIENTS_CLAIM') {
+    console.log('Clients Claim');
+    self.clients.claim();
+  }
+});
 
 // Any other custom service worker logic can go here.
